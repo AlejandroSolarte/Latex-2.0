@@ -1,0 +1,251 @@
+\documentclass[12pt,a4paper,oneside]{book}
+\usepackage[spanish]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage[usenames]{color}
+\usepackage{multicol}
+%\usepackage{wrapfig}
+\usepackage{amsthm,amsmath,amsfonts,amssymb,latexsym,wasysym,marvosym,graphicx}
+\usepackage{pifont}
+\parindent 0pt
+\parskip .5cm
+
+\textheight 25cm
+\textwidth 17cm
+\setlength{\oddsidemargin}{0cm}
+\setlength{\evensidemargin}{1.5cm}
+\setlength{\marginparwidth}{0cm}
+\setlength{\marginparsep}{0cm}
+\setlength{\topmargin}{-2cm}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\C}{{\mathbb{C}}}
+\newcommand{\Z}{{\mathbb{Z}}}
+
+\newcommand{\Rn}{{\mathbb{R}}^{n}}
+\newcommand{\Rm}{{\mathbb{R}}^{m}}
+\newcommand{\Rp}{{\mathbb{R}}^{p}}
+\newcommand{\Cn}{{\mathbb{C}}^{n}}
+\newcommand{\Cm}{{\mathbb{C}}^{m}}
+\newcommand{\Cp}{{\mathbb{C}}^{p}}
+\newtheorem{definicion}{Definici\'{o}n}
+\newtheorem{teo}{Teorema}
+
+\begin{document}
+	\begin{titlepage}
+		\centering
+		\vspace{1cm}
+		{\bfseries\LARGE Universidad del Cauca \par}
+		\vspace{1cm}
+		{\scshape\Large Facultad de Ingeniería Civil \\ Sede: Santander de Quilichao \par}
+		\vspace{3cm}
+		{\scshape\Huge Aplicaciones de las ecuaciones diferenciales de primer orden. Algunos problemas físicos (mecánica, circuitos)  \par}
+		\vspace{3cm}
+		
+	    {\Large Presentado por:  \par}
+	    {\Large Cristhian Alejandro Solarte Andrade \par}
+	    \vspace{1cm}
+		{\Large Presentado a: \par}
+		{\Large Jhonatan Collazos Ramírez \par}
+		\vfill
+		{\Large Agosto de 2022 \par}
+		\end{titlepage}	
+
+\tableofcontents
+\chapter*{Introducción}
+\addcontentsline{toc}{chapter}{Introducción}
+
+El mundo natural está en constante estado de flujo, en dicho estado interactúan elementos colosales como las galaxias, pero también las partículas y elementos más pequeños del cosmos. Y para comprenderlo y predecirlo, el estudio del cálculo y las ecuaciones diferenciales es esencial.
+
+Como su nombre lo indica, una ecuación diferencial es una ecuación matemática que relaciona una función o más funciones con sus derivadas. En las matemáticas aplicadas, por lo general, las funciones usualmente están asociadas con cantidades físicas, las derivadas representan sus razones de cambio y la ecuación define una relación entre ellas. Dado que estas relaciones suelen ser muy comunes, las ecuaciones diferenciales juegan un papel primordial en diversos campos de la ciencia, incluyendo la ingeniería, la física, la química, la economía y la biología.
+
+En este trabajo se desarrollarán algunos ejercicios sobre problemas físicos y de circuitos, con la ayuda de las ecuaciones diferenciales de primer orden.
+
+\newpage
+
+\vspace{3mm}
+
+\chapter{Ejercicios resueltos de mecánica}	
+
+La mecánica o también conocida como el arte de construir una máquina, es la rama de la física que se encarga de estudiar y analizar el movimiento y reposo de los cuerpos, y su evolución en el tiempo, bajo la acción de fuerzas. Muchos problemas de la mecánica se pueden modelar o resolver con la ayuda de las ecuaciones diferenciales, veamos esto con algunos ejercicios resueltos.
+
+\textcolor{blue}{\textbf{Ejercicio 1:}} Una persona $P$, a partir del origen, se mueve en dirección del eje $x$ positivo tirando un
+peso a lo largo de la curva $C$, llamada tractriz, como se muestra en la Figura 1. El peso, se encuentra inicialmente ubicado en el eje $y$ en $(0, s)$, se aleja mediante una cuerda de longitud constante $s$, que se mantiene tensa durante el movimiento. Determine una ecuación diferencial para definir la trayectoria del movimiento. Asumir que la cuerda siempre es tangente a $C$.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm, height=6cm]{Figura1.JPG}
+	\caption{Gráfica del problema.}
+\end{figure}
+
+\textbf{Solución.} De la identidad trigonométrica: tangente de una diferencia de ángulos, tenemos
+\[
+ \tan(\pi-\theta) = \frac{\tan(\pi)-\tan(\theta)}{1+\tan(\pi)\tan(\theta)}=-\tan(\theta).
+\]
+Observando la Figura 1 se deduce:
+\[
+ \tan(\pi-\theta) = \frac{y}{\sqrt{s^2-y^2}}.
+\]
+Ahora bien, $\tan(\theta) = \frac{dy}{dx}$, ya que $\tan(\theta)$ es la pendiente de la recta tangente a la curva en el punto
+$P(X, Y)$. Reemplazando obtenemos finalmente:
+\[
+ \tan(\theta) = \frac{dy}{dx} = \frac{-y}{\sqrt{s^2-y^2}}.
+\]
+En esta última expresión aparece una ecuación diferencial separable. Resolvamos dicha ecuación aprovechando que $s$ es constante:
+\begin{align*}
+	& \frac{dy}{dx} = \frac{-y}{\sqrt{s^2-y^2}} \\
+	\\ & \underbrace{\int \frac{-\sqrt{s^2-y^2}}{y}dy}_{\text{una integral de tabla}} = \int dx \\
+	\\& -\frac{1}{2}\left(2\sqrt{s^2-y^2}+s\ln\left|\frac{\sqrt{s^2-y^2}-s}{\sqrt{s^2-y^2}+s}\right|\right) = x + K \\
+\end{align*}
+esta última expresión es una solución implícita para la trayectoria del movimiento descrito en las condiciones del ejercicio.
+
+
+\textcolor{blue}{\textbf{Ejercicio 2:}} Un cuerpo de 8 lb de peso cae partiendo del reposo desde una gran altura. Conforme cae,
+actúa sobre él la resistencia del aire a la que supondremos (en libras) numéricamente igual a $2v$, siendo
+$v$ la velocidad (en pies por segundo). Hallar la velocidad y la distancia recorrida al cabo de $t$ segundos.
+
+\textbf{Solución.} Elegimos el eje $x$ positivo como vertical y hacia abajo, a lo largo de la trayectoria del cuerpo $B$, el origen en el punto en que el cuerpo inicia su caída. Las fuerzas que actúan sobre el cuerpo son:
+\begin{itemize}
+	\item[(i)] $F_1$, su peso, 8 lb, actuando hacia abajo y por tanto positiva. 
+	\item[(ii)] $f_2$, la resistencia del aire numéricamente igual a $2v$, actuando hacia arriba y por lo tanto negativa y con valor de $-2v$.
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm, height=3.6cm]{Figura2.JPG}
+	\caption{Diagráma de fuerzas.}
+\end{figure}
+
+La segunda ley de Newton $F = ma$ se transforma en $m\frac{dv}{dt} = F_1 + f_2$. Con $g = 32$ y utilizando $m=\frac{w}{g}=\frac{8}{32}=\frac{1}{4}$, y puesto que el cuerpo se encontraba inicialmente en reposo se obtiene:
+\begin{equation}\label{EC1}
+	\frac{1}{4}\frac{dv}{dt} = 8 - 2v
+\end{equation}
+\begin{equation}\label{EC2}
+	v(0) = 0
+\end{equation}
+
+Notemos que (\ref{EC1}) es una ED separable. Resolvamos dicha ecuación:
+\begin{align*}
+	&\frac{1}{4}\frac{dv}{dt} = 8 - 2v \\
+	\\& \int\frac{dv}{8-2v} = \int 4dt \\
+	\\& \frac{-1}{2}\ln\left(8-2v\right) = 4t + K \\
+	\\& 8 - 2v = e^{\ln\left(8-2v\right)} = e^{-2\left(4t+K\right)} = e^{-2K}e^{-8t}=Ce^{-8t} \\
+	\\& v = 4-\frac{C}{2}e^{-8t}.
+\end{align*}
+Aplicando la condición de (\ref{EC2}) encontramos que $C = 8$ por lo que la velocidad en el instante $t$ viene dada por
+\begin{equation}\label{EC3}
+	 v = 4\left(1-e^{-8t}\right).
+\end{equation}	
+Observemos que $x(0)=0$. Ahora bien, de (\ref{EC3}) tenemos:
+\begin{align*}
+	& \frac{dx}{dt} = v = 4\left(1-e^{-8t}\right) \\
+	\\& \int dx = \int  4\left(1-e^{-8t}\right)dt \\
+	\\& x =  4\left(t+\frac{1}{8}e^{-8t}\right) + C_1.
+\end{align*}
+Dado que $x = 0$ cuando $t = 0$ encontramos que $C_1 = -1/2$ por lo que, la distancia recorrida viene dada por:
+\[
+ x(t) = 4\left(t+\frac{1}{8}e^{-8t}\right) - \frac{1}{2}.
+\]
+
+\newpage
+
+\vspace{3mm}
+
+\chapter{Ejercicios resueltos de circuitos}
+
+Los circuitos eléctricos están descritos en su comportamiento por la Ley de Kirchhoff, en realidad, la teoría eléctrica está regida por un conjunto de ecuaciones conocidas en la teoría electromagnética como
+ecuaciones de Maxwell, que se salen de nuestro alcance, y para nuestro estudio es suficiente por ahora la Ley de Kirchhoff, la cual describe una ecuación diferencial lineal de primer orden. Estudiaremos circuitos eléctricos en serie como los que se muestran en la Figura 3.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=10cm, height=3cm]{Figura3.JPG}
+	\caption{Circuito.}
+\end{figure}
+Los elementos del circuito son:
+\begin{itemize}
+	\item La fuerza electromotriz que produce un voltaje $E$, el cual \textquotedblleft origina\textquotedblright una corriente eléctrica que recorre el circuito.
+	\item La resistencia que utiliza dicha energía, $R$.
+	\item La inductancia, que se opone a la variación de la intensidad de corriente, $L$.
+	\item El condensador, $C$, que es un elemento que almacena energía.
+\end{itemize}
+Para el circuito de la izquierda, Figura 3, su modelo matemático es:
+\begin{equation}\label{EC4}
+	L\frac{dI}{dt} + RI = E.
+\end{equation}
+Para el circuito de la derecha, Figura 3, su modelo matemático es:
+\begin{equation}\label{EC5}
+	R\frac{dQ}{dt} + \frac{Q}{C} = E.
+\end{equation}
+
+\textcolor{blue}{\textbf{Ejercicio 1:}} Un generador cuya fem es 100 voltios, se conecta en serie con una resistencia de 10 ohmios y una inducción de 2 henrios. Si el interruptor se cierra cuando $t=0$. Hallar la intensidad de la corriente en función del tiempo.
+
+\textbf{Solución.} El esquema gráfico del circuito está dado por la gráfica del lado derecho de la Figura 3, la ecuación diferencial que modela la situación es:
+\[
+ 2\frac{dI}{dt} + 10I = 100
+\]
+entonces
+\[
+\frac{dI}{dt} + 5I = 50.
+\]
+Resolvamos esta ED:
+\begin{align*}
+	& \frac{dI}{dt} + 5I = 50 \\
+	\\& \int \frac{dI}{50-5I} = \int dt \\
+	\\& -\frac{1}{5}\ln(50-5I) = t + K \\
+	\\& 50 - 5I = e^{\ln(50-5I)} = e^{-5t - 5K} = e^{-5K}e^{-5t} = K_1e^{-5t} \\
+	\\& I(t) = 10 - \frac{K_1}{5}e^{-5t}.
+\end{align*}
+Como  el interruptor se cierra cuando $t=0$, tenemos que $I(0)=0$, y reemplazando esto en $I(t) = 10 - \frac{K_1}{5}e^{-5t}$ obtenemos $K_1=50$, por lo que
+\[
+ I(t) = 10 - \frac{K_1}{5}e^{-5t} = 10\left(1-e^{-5t}\right).
+\]
+
+\textcolor{blue}{\textbf{Ejercicio 2:}} Una fem decreciente, $E = 200e^{-5t}$ , se conecta en serie con una resistencia de 20
+ohmios y un condensador de 0.01 faradios. Supongamos que la carga es cero en un tiempo cero. Hallar la carga y la intensidad en cualquier tiempo t.
+
+\textbf{Solución.} El esquema gráfico del circuito está dado por la gráfica del lado izquierdo de la Figura 3, la ecuación diferencial que modela la situación es:
+\[
+  20\frac{dQ}{dt} + 100Q = 200e^{-5t}
+\]
+entonces
+\[
+ \frac{dQ}{dt} + 5Q = 10e^{-5t}.
+\]
+Resolvamos esta ED. Un factor integrante para dicha ED es $u(t)=e^{\int5dt}=e^{5t}$, multiplicando la ED por $u(t)$ se tiene:
+\begin{align*}
+	& e^{5t}\frac{dQ}{dt} + 5e^{5t}Q = 10 \\
+	\\& \frac{d}{dt}\left(e^{5t}Q\right) = 10 \\
+	\\& \int d\left(e^{5t}Q\right) = \int 10dt\\
+	\\& e^{5t}Q = 10t + K
+	\\& Q(t) = \left(10t + K\right)e^{-5t}.
+\end{align*}
+Como  la carga es cero en un tiempo cero, tenemos que $Q(0)=0$, y reemplazando esto en $Q(t) = \left(10t + K\right)e^{-5t}$ obtenemos $K=0$, por lo que
+\[
+ Q(t) = 10te^{-5t}.
+\]
+Finalmente, 
+\begin{align*}
+ I(t) &= \frac{dQ}{dt} \\
+  \\& = \frac{d}{dt}\left(Q(t)\right) \\ 
+  \\& = \frac{d}{dt}\left(10te^{-5t}\right) \\
+  \\& = 10e^{-5t} - 50te^{-5t}.
+\end{align*}
+
+\chapter*{Conclusiones}
+\begin{itemize}
+	\item  Muchos problemas de la mecánica se pueden resolver con ayuda de las ecuaciones diferenciales, esto se debe a que las ecuaciones diferenciales son una gran herramienta matemática para describir situaciones o fenómenos reales.
+	\item Los circuitos eléctricos que presentamos en este trabajo, son circuitos en serie. Estos circuitos, e incluso otros más generales, se pueden abordar con el empleo de la Ley de Kirchhoff y de las ecuaciones diferenciales.
+\end{itemize}
+
+\newpage
+
+\vspace{3mm}
+
+\begin{thebibliography}{55}
+		
+	\bibitem{} Cullen, M., Zill, D. (2009). Ecuaciones diferenciales con problemas con valores en la frontera, Séptima edición.
+	ISBN-13: 978-607-481-314-2, ISBN-10: 607-481-314-0.
+	\smallskip
+	
+	\bibitem{} Ibargüen, E., Rincón, O., Vergel, M. (2022). ECUACIONES DIFERENCIALES Y APLICACIONES. Editorial Universidad de Nariño.
+	\smallskip
+\end{thebibliography}	
+\end{document} 
